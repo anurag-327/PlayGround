@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="124.8759mm"
+   height="99.711731mm"
+   viewBox="0 0 124.8759 99.711731"
+   version="1.1"
+   id="svg5"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-249.11736,65.535475)">
+    <g
+       id="g1378">
+      <g
+         id="g1408">
+        <path
+           id="path1234"
+           style="fill:none;stroke:#000000;stroke-width:22;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none"
+           d="m 45.181689,-122.09842 c 51.904028,6.97514 99.635001,-29.44686 106.610151,-81.35086"
+           sodipodi:nodetypes="cc" />
+        <circle
+           style="fill:#000000;stroke:none;stroke-width:15.0479;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+           id="circle1236"
+           cx="55.31794"
+           cy="-192.45898"
+           r="17.5" />
+        <circle
+           style="fill:#000000;stroke:none;stroke-width:15.0479;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+           id="circle1238"
+           cx="101.23106"
+           cy="-192.45898"
+           r="17.5" />
+        <text
+           xml:space="preserve"
+           style="font-size:138.14px;line-height:1.25;font-family:'Tw Cen MT Condensed';-inkscape-font-specification:'Tw Cen MT Condensed, ';text-align:center;letter-spacing:0px;text-anchor:middle;stroke-width:2.0721"
+           x="601.16473"
+           y="-111.30554"
+           id="text1296"><tspan
+             sodipodi:role="line"
+             id="tspan1294"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'The Bold Font';-inkscape-font-specification:'The Bold Font';stroke-width:2.0721"
+             x="601.16473"
+             y="-111.30554">PLAYGROUND</tspan></text>
+      </g>
+      <g
+         id="g1401"
+         transform="translate(209.50466,-13.157298)"
+         inkscape:export-filename="playground_1.svg"
+         inkscape:export-xdpi="250"
+         inkscape:export-ydpi="250">
+        <path
+           id="path1392"
+           style="fill:none;stroke:#000000;stroke-width:22;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none"
+           d="m 46.97646,35.482383 c 51.904028,6.97514 99.635,-29.44686 106.61015,-81.35086"
+           sodipodi:nodetypes="cc" />
+        <circle
+           style="fill:#000000;stroke:none;stroke-width:15.0479;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+           id="circle1394"
+           cx="57.112709"
+           cy="-34.878181"
+           r="17.5" />
+        <circle
+           style="fill:#000000;stroke:none;stroke-width:15.0479;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+           id="circle1396"
+           cx="103.02583"
+           cy="-34.878181"
+           r="17.5" />
+      </g>
+    </g>
+  </g>
+</svg>
