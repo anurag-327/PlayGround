@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
+import BlogPost from './container/BlogPost'
+import Login from './container/Login'
 import UserProfile from './container/UserProfile'
 import Feed from './container/Feed'
 import LeaderBoard from './container/LeaderBoard'
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
   {
     path: '/leaderboard',
     element: <LeaderBoard />
+  },
+  {
+    path: '/blog',
+    element: <BlogPost />
+  },
+  {
+    path: '/login',
+    element: <Login />
   },
   {
     path: '/app',
