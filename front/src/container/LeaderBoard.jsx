@@ -31,7 +31,7 @@ function LeaderBoard(){
 
 	return (
 		<div className="w-full flex flex-col">
-			<Header title="LeaderBoard" />
+			<Header title="LeaderBoard"/>
 			<ul className="p-4">
 				{
 					users.map((i, ind) => (

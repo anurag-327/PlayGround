@@ -1,7 +1,7 @@
-import { CircleWavyCheck, Star } from "phosphor-react"
+import { CircleWavyCheck, Star, FinnTheHuman } from "phosphor-react"
 import userImage from "../assets/duotone-ashish.jpg"
 
-function Profile({ id, avatarURL, name, username, created }){
+function Profile({ id, avatar, avatarURL, name, username, created }){
 	const months = [
 	    "Jan",
 	    "Feb",
@@ -21,8 +21,13 @@ function Profile({ id, avatarURL, name, username, created }){
 		<div className="w-full flex py-6">
 			<div id="metaData" className="flex items-center m-auto">
 
-				<div className="w-[120px] h-[120px] overflow-hidden rounded-full border">
-					<img src={avatarURL} alt="User image." />
+				<div className="w-[120px] h-[120px] overflow-hidden rounded-full bg-yellow-300 flex border">
+					{
+						avatar?
+						<img src={avatarURL} alt={`Avatar image of ${name}`} />
+						:
+						<FinnTheHuman weight="fill" size={64} className="m-auto"/>
+					}
 				</div>
 
 				<div className="flex flex-col text-sm ml-3">

@@ -2,8 +2,8 @@ import { CircleNotch } from 'phosphor-react'
 
 function Loader(){
 	return (
-		<div className="absolute w-full h-full bg-[white] flex">
-			<CircleNotch weight="bold" className=" animate-spin m-auto"/>
+		<div className="absolute inset-0 w-full h-full flex bg-yellow-300">
+			<CircleNotch size={30} weight="bold" className=" animate-spin m-auto"/>
 		</div>
 	)
 }

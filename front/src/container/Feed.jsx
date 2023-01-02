@@ -4,20 +4,21 @@ import Loader from "../components/Loader"
 import Footer from "../components/Footer"
 import banner from "../assets/card-banner.png"
 import logo from "../assets/playground_full.svg"
-import { TrendUp, List, X, User } from "phosphor-react"
+import { TrendUp, List, X, User, Flag, ArrowCircleRight } from "phosphor-react"
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { pocket } from '../utils/PocketbaseClient'
 
 function Feed(){
-		const [ menuState, setMenuState ] = useState(false)
+	const [ menuState, setMenuState ] = useState(false)
 
-	  const cardData = {
+	const cardData = {
 	    tags: ['light jog', 'day 12', 'array'],
 	    title: 'Chatting with Alison Roux',
 	    createdAt: '21st Jan',
 	    summary: 'Alison Roux is an product designer who started her career in Canada, working for a large architectural firm.',
 	    bannerURL: banner
-	  }
+	}
 
 
 	return (
@@ -37,19 +38,35 @@ function Feed(){
 			{
 				menuState &&
 				<div className="w-full">
-					<div className="flex text-lg bg-yellow-300 py-6 underline mb-6">
+					<div className="flex text-xl bg-yellow-300 py-6 mb-6">
 					<ul className="flex m-auto flex-col items-start">
-						<li className="my-1">
+						<li className="my-2">
 							<Link to="/leaderboard" className="flex items-center">
-								<TrendUp className="mr-1" size={20}/>
+								<Flag weight="fill" className="mr-1" size={20}/>
 								Leaderboard
 							</Link>
 						</li>
-						<li className="my-1">
-							<Link to="/profile" className="flex items-center">
-								<User className="mr-1" size={20}/>
-								Profile
-							</Link>
+						<li className="my-2">
+							{
+								pocket.authStore.isValid?
+								<Link 
+									to="/profile" 
+									preventScrollReset={true} 
+									className="flex items-center"
+								>
+									<User className="mr-1" weight="fill" size={22}/>
+									Profile
+								</Link>
+								:
+								<Link 
+									to="/login"
+									preventScrollReset={true} 
+									className="flex items-center"
+								>
+									<ArrowCircleRight className="mr-1" weight="fill" size={22}/>
+									Login
+								</Link>
+							}
 						</li>
 					</ul>
 					</div>
