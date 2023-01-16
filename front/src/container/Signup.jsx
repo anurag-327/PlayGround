@@ -1,22 +1,14 @@
 import Footer from '../components/Footer'
 import Loader from '../components/Loader'
-import Error from '../container/Error'
 import logo from '../assets/playground_full.svg'
+import Error from "../container/Error"
 import { Confetti, ArrowLeft, Eye, EyeSlash, Warning } from 'phosphor-react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { pocket } from '../utils/PocketbaseClient'
 
-function ErrorMessage({ message }){
-	return (
-		<p className="ml-3 flex items-center italic text-red-500">
-    		<Warning size={20} weight="fill" className="fill-red-500 mr-1"/>
-    		{message}
-    	</p>
-	)
-}
 
-function Login(){
+function Signup(){
 	const navigate = useNavigate();
 	const [ emailErrorMessage, setEmailErrorMessage ] = useState('')
 	const [ passwordErrorMessage, setPasswordErrorMessage ] = useState('')
@@ -33,7 +25,6 @@ function Login(){
 			setEmailErrorMessage('Invalid email address.')
 			setEmailError(!emailError);
 			e.target.email.focus();
-			// navigate("/error");
 			return;
 		}
 		password = password.value.replace(' ','');
@@ -41,7 +32,6 @@ function Login(){
 			setPasswordErrorMessage('Invalid password length')
 			setPasswordError(!emailError);
 			e.target.password.focus();
-			// navigate("/error");
 			return;
 		}
 		e.target.reset();
@@ -52,12 +42,11 @@ function Login(){
 
 	async function handleLogin(email, password){
 		let authData;
-		let data={
+        let data={
 			"email":email,
 			"password":password
 		}
 		try{
-			console.log("before auth");
 			authData = await pocket.collection('users').create({
 			    "email": email,
 			    "emailVisibility": true,
@@ -66,23 +55,17 @@ function Login(){
 			    "name": email.substring(0,email.indexOf("@")),
 			    "username": email.substring(0,email.indexOf("@"))
 			})
-			authData = await pocket.collection('users').authWithPassword(email, password);
-			console.log("after auth");
-			navigate("/error")
+            console.log(authData);
+            if(authData)
+            {
+                authData = await pocket.collection('users').authWithPassword(email, password);
+                navigate("/");
+            }
+            
 		} catch(err){
-			console.log("catch");
-			console.log("error1",err)
-			try{
-				authData = await pocket.collection('users').authWithPassword(email, password);
-				navigate("/");
-			}
-			catch(error)
-			{
-				console.log("error2",error)
-				navigate('/error')
-			}
+            console.log("error in signup",err);
+            navigate("/error");
 		}
-		return true
 	}
 
 	function debounce(fn, ms){
@@ -99,8 +82,7 @@ function Login(){
 		<>
 		<header className="w-full p-4 flex">
 			<button className="p-1 items-center flex" onClick={() => {
-				if(pocket.authStore.isValid){ navigate('/') }
-				else{ navigate(-1) }
+			{ navigate(-1)}
 			}}>
 				<ArrowLeft size={20} className="mr-2" />
 				back
@@ -112,7 +94,7 @@ function Login(){
 					isLoading && <Loader /> 
 				}
 				<h1 className="text-center text-lg">
-					Join
+					SignUp
 					<img src={logo} alt="" className="my-4" />
 				</h1>
 				<form 
@@ -165,7 +147,7 @@ function Login(){
 					</label>
 					<button type="submit" className="bg-yellow-300 font-lg font-bold p-4 mt-4 rounded uppercase flex">
 						<p className="flex m-auto items-center">
-							hop in!
+							Signup😎
 							<Confetti weight="fill" size={20}/>
 						</p>
 					</button>
@@ -177,4 +159,4 @@ function Login(){
 	)
 }
 
-export default Login
+export default Signup;
