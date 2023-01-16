@@ -93,23 +93,15 @@ function Feed(){
 									<User className="mr-1" weight="fill" size={22}/>
 									Profile
 								</Link>
-								:([
-								<Link 
-									to="/login"
-									preventScrollReset={true} 
-									className="flex items-center"
-								>
-									<ArrowCircleRight className="mr-1" weight="fill" size={22}/>
-									Login
-								</Link>,
+								:(
 								<Link 
 									to="/signup"
 									preventScrollReset={true} 
 									className="flex items-center"
 								>
 									<ArrowCircleRight className="mr-1" weight="fill" size={22}/>
-									Sign Up
-								</Link>])
+									Login
+								</Link>)
 								
 							}
 						</li>

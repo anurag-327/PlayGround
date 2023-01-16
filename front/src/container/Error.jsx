@@ -14,9 +14,9 @@ function Error()
 
         <section>
 
-        <div class="bg-black text-white">
-            <div class="flex h-screen">
-                <div class="m-auto text-center">
+        <div className="bg-black text-white">
+            <div className="flex h-screen">
+                <div className="m-auto text-center">
                     <div>
                         <svg width="631" height="379" viewBox="0 0 631 379" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0)">
@@ -194,7 +194,7 @@ function Error()
                         </svg>
     
                     </div>
-                    <p class="text-sm md:text-base text-yellow-300 p-2 mb-4">Looks Like You Missed Something
+                    <p className="text-sm md:text-base text-yellow-300 p-2 mb-4">Looks Like You Missed Something
                     </p>
                     <Link 
 									to="/"

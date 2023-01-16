@@ -8,6 +8,7 @@ import Error from './container/Error'
 import UserProfile from './container/UserProfile'
 import Feed from './container/Feed'
 import LeaderBoard from './container/LeaderBoard'
+import Loginsignup from "./container/LoginSignup"
 import './index.css'
 import {
   createBrowserRouter,
@@ -47,7 +48,8 @@ const router = createBrowserRouter([
   {
     path: '/app',
     element: <App />
-  }
+  },
+ 
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
