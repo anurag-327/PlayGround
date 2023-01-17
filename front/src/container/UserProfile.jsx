@@ -30,7 +30,7 @@ function UserProfile(){
 		      	className="bg-yellow-300 p-2 px-6 rounded my-2 ml-auto font-medium"
 		      	onClick={() => {
 			      	pocket.authStore.clear();
-			      	navigate('/login');
+			      	navigate('/');
 		      }}>
 		      	Log out
 		      </button>

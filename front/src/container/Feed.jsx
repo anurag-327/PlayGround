@@ -20,7 +20,41 @@ function Feed(){
 	    bannerURL: banner
 	}
 
-
+	function rendercomponents()
+	{
+		if(pocket.authStore.isValid)
+		{
+			return( <Link 
+					to="/profile" 
+					preventScrollReset={true} 
+					className="flex items-center"
+				>
+					<User className="mr-1" weight="fill" size={22}/>
+					Profile
+				</Link>
+				)
+		}
+		else{
+			return(
+			<Link 
+				to="/login"
+				preventScrollReset={true} 
+				className="flex items-center"
+			>
+				<ArrowCircleRight className="mr-1" weight="fill" size={22}/>
+				Login
+			</Link>,
+			<Link 
+				to="/login"
+				preventScrollReset={true} 
+				className="flex items-center"
+			>
+				<ArrowCircleRight className="mr-1" weight="fill" size={22}/>
+				Login
+			</Link>)
+		}
+	}
+	
 	return (
 		<div className="relative">
 			<header className="w-full flex items-center p-3">
@@ -47,7 +81,9 @@ function Feed(){
 							</Link>
 						</li>
 						<li className="my-2">
+							{/* {rendercomponents()} */}
 							{
+								
 								pocket.authStore.isValid?
 								<Link 
 									to="/profile" 
@@ -57,15 +93,16 @@ function Feed(){
 									<User className="mr-1" weight="fill" size={22}/>
 									Profile
 								</Link>
-								:
+								:(
 								<Link 
-									to="/login"
+									to="/signup"
 									preventScrollReset={true} 
 									className="flex items-center"
 								>
 									<ArrowCircleRight className="mr-1" weight="fill" size={22}/>
 									Login
-								</Link>
+								</Link>)
+								
 							}
 						</li>
 					</ul>

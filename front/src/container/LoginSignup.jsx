@@ -1,32 +1,16 @@
 import Footer from '../components/Footer'
 import Loader from '../components/Loader'
-import Error from '../container/Error'
 import logo from '../assets/playground_full.svg'
-import { Link } from 'react-router-dom'
+import Error from "../container/Error"
+import ErrorMessage from "../components/ErrorMessage"
 import { Confetti, ArrowLeft, Eye, EyeSlash, Warning } from 'phosphor-react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { pocket } from '../utils/PocketbaseClient'
 
-function ErrorMessage({ message }){
-	return (
-		<p className="ml-3 flex items-center italic text-red-500">
-    		<Warning size={20} weight="fill" className="fill-red-500 mr-1"/>
-    		{message}
-    	</p>
-	)
-}
-
-function Login(){
-	const navigate = useNavigate();
-	const [ emailErrorMessage, setEmailErrorMessage ] = useState('')
-	const [ passwordErrorMessage, setPasswordErrorMessage ] = useState('')
-	const [ showPassword, setShowPassword ] = useState(true)
-	const [ emailError, setEmailError ] = useState(false)
-	const [ passwordError, setPasswordError ] = useState(false)
-	const [ isLoading, setIsLoading ] = useState(false)
-
-	function handleSubmit(e){
+function LoginSignup()
+{
+    function handleSubmit(e){
 		let { email, password } = e.target;
 		email = (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm.exec(email.value));
 		if(email){ email = email[0] }
@@ -96,9 +80,9 @@ function Login(){
 		}
 	}
 
-	return (
-		<>
-		<header className="w-full p-4 flex">
+   return(
+    <>
+    <header className="w-full p-4 flex">
 			<button className="p-1 items-center flex" onClick={() => {
 				if(pocket.authStore.isValid){ navigate('/') }
 				else{ navigate(-1) }
@@ -107,13 +91,14 @@ function Login(){
 				back
 			</button>
 		</header>
-		<div className="w-full h-full my-6 flex relative">
+
+        <div className="w-full h-full my-16 flex relative">
 			<div className="m-auto w-4/5 overflow-hidden p-12 rounded-lg relative shadow-xl">
 				{ 
-					isLoading && <Loader /> 
+					 <Loader /> 
 				}
 				<h1 className="text-center text-lg">
-					<span className="font-bold text-4xl text-yellow-400">Join</span>
+					Join
 					<img src={logo} alt="" className="my-4" />
 				</h1>
 				<form 
@@ -171,13 +156,14 @@ function Login(){
 							<Confetti weight="fill" size={20}/>
 						</p>
 					</button>
-					
+					<Link to="/signup">alreay a member ju</Link>
 				</form>
 			</div>
 		</div>
-		<Footer />
-		</>
-	)
+    
+    <Footer />
+    </>
+   )
 }
 
-export default Login
+export default LoginSignup
