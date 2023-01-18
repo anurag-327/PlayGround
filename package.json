@@ -1,0 +1,30 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "description": "Practice DSA at your will and pace at Playground. ![Landing page image](https://github.com/hugekontrast/PlayGround/blob/main/images/landpage_v0.1.jpeg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hugekontrast/PlayGround.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hugekontrast/PlayGround/issues"
+  },
+  "homepage": "https://github.com/hugekontrast/PlayGround#readme",
+  "dependencies": {
+    "@notionhq/client": "^2.2.3",
+    "@vitejs/plugin-react": "^3.0.1",
+    "phosphor-react": "^1.4.1",
+    "pocketbase": "^0.10.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.6.2",
+    "vite": "^4.0.4"
+  }
+}
