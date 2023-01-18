@@ -1,6 +1,19 @@
 import { Link } from 'react-router-dom'
+import banner from "../assets/card-banner.png"
+function Card(props){
+    
+	const id=props.id;
+	const title=props.title;
+	const summary=props.summary;
+	const bannerURL=banner;
+	const createdAt=props.date.slice(0,10);
+	const queryparams="/blog/"+id;
+	
+	
+	
 
-function Card({ title, summary, bannerURL, createdAt, tags }){
+	const tags=props.tags.tag;
+	// const tags=['light jog', 'day 12', 'array'];
 
 	return (
 		<div className="w-4/5 shadow-xl m-auto rounded-xl overflow-hidden my-12 cursor-pointer">
@@ -13,7 +26,7 @@ function Card({ title, summary, bannerURL, createdAt, tags }){
 				<p className="ml-1 text-gray-500">
 					posted on {createdAt}
 				</p>
-				<Link to="/blog">
+				<Link to={`/blog?id=${id}`}>
 					<h1 className="text-4xl font-medium my-2">
 						{title}
 					</h1>
