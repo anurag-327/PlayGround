@@ -1,5 +1,6 @@
 import Header from "../components/Header"
 import Card from "../components/Card"
+import Module from "../components/Module"
 import Loader from "../components/Loader"
 import Footer from "../components/Footer"
 import banner from "../assets/card-banner.png"
@@ -109,6 +110,7 @@ function Feed(){
 					</div>
 				</div>
 			}
+			<Module />
 			<ul>
 			{
 		      Array(4).fill('').map((i, ind) => (<Card key={ind+''} {...cardData}/>))
