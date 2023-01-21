@@ -43,8 +43,8 @@ function Signup(){
           return true;
       
         } else {
-          alert("Invalid email address!");      
-          return false;
+        //   alert("Invalid email address!");      
+          return true;
     }
 }
     function passwordcheck(email,password)
@@ -84,9 +84,9 @@ function Signup(){
         let passres=passwordcheck(email,password);
         if(mailres==passres && passres==true)
         {
-            // handleLogin(email,password);
+            handleLogin(email,password);
             console.log("mailres,passres",mailres,passres);
-            console.log("not proceeding")
+            // console.log("not proceeding")
         }
         else
         {
@@ -110,8 +110,8 @@ function Signup(){
 			    "emailVisibility": true,
 			    "password": password,
 			    "passwordConfirm": password,
-			    "name": email.substring(0,email.indexOf("@")),
-			    "username": email.substring(0,email.indexOf("@"))
+			    "name": email.toString().substring(0,email.indexOf("@")),
+			    "username": email.toString().substring(0,email.indexOf("@"))
 			})
             console.log(authData);
             if(authData)

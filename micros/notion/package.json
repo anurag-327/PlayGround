@@ -10,7 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "@notionhq/client": "^2.2.3",
     "dotenv": "^16.0.3"
+=======
+    "@notionhq/client": "^2.2.3"
+>>>>>>> 3b302c4576862f80c62aa895206faddeaea7793a
   }
 }

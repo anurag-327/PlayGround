@@ -24,8 +24,11 @@ function LeaderBoard(){
 	useEffect(() => {
 		(async function(){
 			let r = await pocket.collection('points_table').getFullList(200)
+			
 			r = sortList(r)
+			// console.log(r)
 			setUsers(r)
+			
 		}())
 	}, [])
 

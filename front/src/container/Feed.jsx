@@ -5,21 +5,75 @@ import Loader from "../components/Loader"
 import Footer from "../components/Footer"
 import banner from "../assets/card-banner.png"
 import logo from "../assets/playground_full.svg"
-import { TrendUp, List, X, User, Flag, ArrowCircleRight } from "phosphor-react"
-import { useState } from 'react'
+import { TrendUp, List, X, User, Flag, ArrowCircleRight, CodepenLogo } from "phosphor-react"
+
 import { Link } from 'react-router-dom'
 import { pocket } from '../utils/PocketbaseClient'
-
-function Feed(){
+import { useEffect, useState } from 'react'
+function Feed()
+{
 	const [ menuState, setMenuState ] = useState(false)
+	const [ blogs, setblogs ] = useState([])
+    const [ isloading , setisloading ]= useState(true);
+    const [ ErrorMessage , setErrorMessage ]= useState(false);
 
-	const cardData = {
-	    tags: ['light jog', 'day 12', 'array'],
-	    title: 'Chatting with Alison Roux',
-	    createdAt: '21st Jan',
-	    summary: 'Alison Roux is an product designer who started her career in Canada, working for a large architectural firm.',
-	    bannerURL: banner
-	}
+
+	useEffect(() => {
+		(async function(){
+			try{
+				let r = await pocket.collection('blog_content').getFullList(200,{
+					sort: '-created',
+				})
+				setblogs(r);	
+				setisloading(false);
+				setErrorMessage(null);
+			}
+			catch(err)
+			{
+				console.log(err);
+				setErrorMessage(true);
+                setisloading(false);
+			}
+			
+			
+		}())
+	}, [])
+
+
+	const blog = [
+		{
+			id:4,
+			tags: ['light jog', 'day 12', 'array'],
+			title: 'Day 4 Hard Array Questions',
+			createdAt: '19th Jan',
+			summary: 'Array Hard Questions.',
+			bannerURL: banner
+		},
+		{
+			id:3,
+			tags: ['light jog', 'day 12', 'array'],
+			title: 'Day 3 medium Array Questions',
+			createdAt: '18th Jan',
+			summary: 'Array Medium Questions.',
+			bannerURL: banner
+		},
+		{
+			id:2,
+			tags: ['light jog', 'day 12', 'array'],
+			title: 'Day 2 Easy Array Questions',
+			createdAt: '17th Jan',
+			summary: 'Array Easy Questions.',
+			bannerURL: banner
+		},
+		{
+			id:1,
+	        tags: ['light jog', 'day 12', 'array'],
+	        title: 'Day 1 Introduction to arrray',
+	        createdAt: '16th Jan',
+	        summary: 'Basic Introduction to array.',
+	        bannerURL: banner
+	   }		
+]
 
 	function rendercomponents()
 	{
@@ -110,12 +164,22 @@ function Feed(){
 					</div>
 				</div>
 			}
+<<<<<<< HEAD
 			<Module />
 			<ul>
+=======
+>>>>>>> 3b302c4576862f80c62aa895206faddeaea7793a
 			{
-		      Array(4).fill('').map((i, ind) => (<Card key={ind+''} {...cardData}/>))
-		    }
-		    </ul>
+                ErrorMessage ?(<div>Could Not Fetch data</div>) : (isloading ? (<div className="relative mb-96 mt-32 "><Loader /></div> ):(
+					<ul>
+					{
+					 
+						blogs.map((data) => (<Card key={data.id} {...data}></Card>))
+					}
+					</ul>))
+			}
+            
+			
 		    <Footer />
 		</div>
 	)

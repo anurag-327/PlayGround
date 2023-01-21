@@ -8,7 +8,7 @@ import Error from './container/Error'
 import UserProfile from './container/UserProfile'
 import Feed from './container/Feed'
 import LeaderBoard from './container/LeaderBoard'
-import Loginsignup from "./container/LoginSignup"
+
 import './index.css'
 import {
   createBrowserRouter,
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     element: <LeaderBoard />
   },
   {
-    path: '/blog',
+    path: '/blog?',
     element: <BlogPost />
   },
   {

@@ -43,6 +43,7 @@ function Login(){
 			setPasswordError(!emailError);
 			e.target.password.focus();
 			// navigate("/error");
+			<Error />
 			return;
 		}
 		e.target.reset();
@@ -53,10 +54,7 @@ function Login(){
 
 	async function handleLogin(email, password){
 		let authData;
-		let data={
-			"email":email,
-			"password":password
-		}
+		
 		try{
 			console.log("before auth");
 			authData = await pocket.collection('users').create({
@@ -67,19 +65,15 @@ function Login(){
 			    "name": email.substring(0,email.indexOf("@")),
 			    "username": email.substring(0,email.indexOf("@"))
 			})
-			authData = await pocket.collection('users').authWithPassword(email, password);
-			console.log("after auth");
 			navigate("/error")
-		} catch(err){
-			console.log("catch");
-			console.log("error1",err)
+		} catch(err)
+		{
 			try{
 				authData = await pocket.collection('users').authWithPassword(email, password);
 				navigate("/");
 			}
 			catch(error)
 			{
-				console.log("error2",error)
 				navigate('/error')
 			}
 		}

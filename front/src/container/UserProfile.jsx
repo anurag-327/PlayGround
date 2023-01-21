@@ -17,6 +17,7 @@ function UserProfile(){
 		if(!pocket.authStore.isValid){ navigate('/') }
 		else {
 	    	const record = pocket.authStore.model;
+			console.log("record ",record);
 	        const avatarURL = `http://127.0.0.1:8090/api/files/${record.collectionId}/${record.id}/${record.avatar}`;
 		    setUserData({...record, avatarURL})
 		}
