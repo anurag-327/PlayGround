@@ -1,50 +1,52 @@
-const fs = require('fs')
-const { Client } = require('@notionhq/client');
+import fs from 'fs'
+import { Client } from '@notionhq/client'
+import { create_database } from './pocket.js'
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 const notion = new Client({ auth: process.env['NOTION_KEY'] });
 
-let filesData = {
-    module_name: '',
-    files: []
-};
+let module_data = {};
+let pages_data = [];
 
-async function getPages(databaseId) {
+async function getPages() {
+
+    const database_id = process.env['NOTION_DATABASE_ID']
+
     const r = await notion.databases.query({
-        database_id: databaseId
+        database_id: database_id
     })
     const c = await notion.databases.retrieve({
-        database_id: process.env['NOTION_DATABASE_ID']
+        database_id: database_id
     })
-    filesData['module_name'] = c['title'][0]['plain_text'];
-    return r.results
+
+    module_data = c;
+    pages_data = r;
+
+    return r.results;
 }
 
 async function getPageData(pages) {
     for (let i = 0; i < pages.length; i++) {
+
         let r = await notion.blocks.children.list({
             block_id: pages[i].id,
             page_size: 50
         })
-        let page_title = pages[i]['properties']['Title']['title'][0]['text']['content'];
-        let page_id = pages[i].id;
-        filesData['files'].push({
-            page_title: page_title,
-            page_id: page_id
-        });
-        fs.writeFile('data/blogs/'+pages[i].id + '.json',
-            JSON.stringify(r.results),
-            (err, file) => {
-                if (err) throw err;
-                console.log('Saved!')
-            }
-        )
+
+        let c = await notion.pages.retrieve({ 'page_id': pages[i].id });
+
+        pages_data.results[i] = {...r, ...c}
+
     }
-    fs.writeFile('data/filesData.json', JSON.stringify(filesData), (err, file) => {
-        if (err) throw err;
-        console.log('Saved!');
-    })
+
+    return pages;
 }
 
 (async () => {
-    let pages = await getPages(process.env['NOTION_DATABASE_ID'])
+    let pages = await getPages()
     await getPageData(pages)
+    // console.log(module_data, pages_data)
+    // module_data && pages_data['results']
+    await create_database(module_data, pages_data['results'])
 })()

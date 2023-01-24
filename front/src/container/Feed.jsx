@@ -164,11 +164,8 @@ function Feed()
 					</div>
 				</div>
 			}
-<<<<<<< HEAD
 			<Module />
 			<ul>
-=======
->>>>>>> 3b302c4576862f80c62aa895206faddeaea7793a
 			{
                 ErrorMessage ?(<div>Could Not Fetch data</div>) : (isloading ? (<div className="relative mb-96 mt-32 "><Loader /></div> ):(
 					<ul>
@@ -178,7 +175,7 @@ function Feed()
 					}
 					</ul>))
 			}
-            
+            </ul>
 			
 		    <Footer />
 		</div>

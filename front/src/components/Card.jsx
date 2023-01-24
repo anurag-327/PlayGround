@@ -18,8 +18,8 @@ function Card(props){
 	return (
 		<div className="w-4/5 shadow-xl m-auto rounded-xl overflow-hidden my-12 cursor-pointer">
 
-			<div className="w-full sm:aspect-video h-[60vh] bg-[black]">
-				<img src={bannerURL} alt="post banner" className="h-full object-cover" />
+			<div className="w-full sm:aspect-video h-[60vh] bg-[black] overflow-hidden">
+				<img src={bannerURL} alt="post banner" className="w-full object-contain" />
 			</div>
 
 			<div className="p-6 pb-8">

@@ -2,6 +2,7 @@
   "name": "notion",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,11 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
     "@notionhq/client": "^2.2.3",
-    "dotenv": "^16.0.3"
-=======
-    "@notionhq/client": "^2.2.3"
->>>>>>> 3b302c4576862f80c62aa895206faddeaea7793a
+    "dotenv": "^16.0.3",
+    "pocketbase": "^0.10.1"
   }
 }
