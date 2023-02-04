@@ -64,7 +64,7 @@ export async function create_database(module_data, pages){
 		await make_record(
 			database_name,
 			snakify(pages[i]['properties']['Title']['title'][0]['plain_text']),
-			pages[i].results
+			pages[i]
 		)
 	}
 

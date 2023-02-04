@@ -20,8 +20,12 @@ async function getPages() {
         database_id: database_id
     })
 
-    module_data = c;
+
+    module_data = {...r, ...c};
     pages_data = r;
+    fs.writeFile('./data.json', JSON.stringify({...r, ...c}), () =>{
+        console.log('printed')
+    })
 
     return r.results;
 }
@@ -36,8 +40,12 @@ async function getPageData(pages) {
 
         let c = await notion.pages.retrieve({ 'page_id': pages[i].id });
 
+
         pages_data.results[i] = {...r, ...c}
 
+        fs.writeFile(`./page-${pages[i].id}.json`, JSON.stringify(pages_data.results[i]), () =>{
+            console.log('printed')
+        })
     }
 
     return pages;

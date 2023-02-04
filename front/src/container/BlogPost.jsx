@@ -6,19 +6,21 @@ import Loader from "../components/Loader"
 import queryString from 'query-string'
 import { useEffect, useState } from 'react'
 
+import { pocket } from '../utils/PocketbaseClient'
 
 
 function BlogPost(props){
-	const [ isloading , setisloading ]= useState(true);
-	const [ blog , setblog ]= useState(null);
+	const [ isloading , setIsloading ]= useState(true);
+	const [ blog , setBlog ]= useState(null);
 	const [ ErrorMessage , setErrorMessage ]= useState(false);
+
 	//accessing id of note to be accessed
 	const [searchParams] = useSearchParams(); 
 	let ids;
 	for (const entry of searchParams.entries()) 
 	{
-	const [param, value] = entry;
-	ids=value;
+		const [param, value] = entry;
+		ids = value;
     }
 
 
@@ -52,7 +54,17 @@ function BlogPost(props){
 	useEffect(() => 
 	{
 		window.scrollTo(0,0);
-		getnotes(ids);
+		// getnotes(ids);
+		(async () => {
+			try{
+				const { data } = await pocket.collection('30_day_garden_walk').getOne(ids);
+				setBlog(data)
+				setIsloading(false);
+				setErrorMessage(null);
+			} catch(err){
+				console.log(err)
+			}
+		})()
 	}, [])
   
     
@@ -66,38 +78,36 @@ function BlogPost(props){
 					<div className="flex flex-col p-12">
 					<div className="flex">
 						{
-							blog.tags.tag.map((i, ind) => (
+							blog.properties.Tags.multi_select.map((i, ind) => (
 								<p key={ind+''} className="bg-yellow-300 p-2 px-4 font-bold text-xs rounded-full mr-2">
-									{i}
+									{i.name}
 								</p>
 							))
 						}
 					</div>
 					<p className="ml-1 mt-4 text-gray-500">
-						posted on {blog.date.slice(0,10)}
+						posted on {new Date(blog.created_time).toDateString()}
 					</p>
 					<h1 className="text-5xl my-1 font-medium">
-						{blog.title}
+						{blog.properties.Title.title[0].plain_text}
 					</h1>
 					<p className=" text-gray-500 text-lg mt-1">
-						{blog.summary} 
+						{blog.summary || 'summary'} 
 					</p>
-					<div className="p-2 my-4 text-center">
-						<figure>
-							<img src={banner} alt="" />
-						</figure>
-						<figcaption className="mt-2">
-							Photo from Pexels by {' '}
-							<a href="#" className="underline">Kalakandi</a>
-						</figcaption>
+					<div className="my-4 text-center w-full aspect-video overflow-hidden rounded-md">
+						<img src={blog.cover.external.url} alt="" />
 					</div>
 					<section className="my-3">
 						<h1 className="font-medium text-xl mb-3">
 							Introduction
 						</h1>
-						<p>
-							Alison Roux is an product designer who started her career in Canada, working for a large architectural firm. Alison Roux is an product designer who started her career in Canada, working for a large architectural firm. Alison Roux is an product designer who started her career in Canada, working for a large architectural firm.
-						</p>
+						{	
+							blog.results.map(i => (
+								<p key={i.id} className="my-4">
+									{i[i.type].rich_text[0].text.content}
+								</p>
+							))
+						}
 					</section>
 				</div>	
 				)

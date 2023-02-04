@@ -21,10 +21,11 @@ function Feed()
 	useEffect(() => {
 		(async function(){
 			try{
-				let r = await pocket.collection('blog_content').getFullList(200,{
+				let r = await pocket.collection('30_day_garden_walk').getFullList(200,{
 					sort: '-created',
 				})
-				setblogs(r);	
+				r = r.filter(i => i.title !== 'index')
+				setblogs(r);
 				setisloading(false);
 				setErrorMessage(null);
 			}
@@ -164,18 +165,23 @@ function Feed()
 					</div>
 				</div>
 			}
-			<Module />
-			<ul>
+			<h1 className="mx-8 text-2xl">Module</h1>
+			<ul className="overflow-x-scroll flex items-center gap-4 mx-8 p-4">
+				{
+					Array(6).fill('').map( (i, ind) => <Module key={ind+''} />)
+				}
+			</ul>
+
+			<h1 className="m-8 mb-0 text-2xl">Blogs</h1>
 			{
                 ErrorMessage ?(<div>Could Not Fetch data</div>) : (isloading ? (<div className="relative mb-96 mt-32 "><Loader /></div> ):(
-					<ul>
+					<ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 m-8 mt-4">
 					{
 					 
-						blogs.map((data) => (<Card key={data.id} {...data}></Card>))
+						blogs.map((data) => <Card key={data.id} {...data}></Card>)
 					}
 					</ul>))
 			}
-            </ul>
 			
 		    <Footer />
 		</div>

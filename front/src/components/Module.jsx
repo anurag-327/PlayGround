@@ -3,8 +3,10 @@ import { Star } from 'phosphor-react'
 
 function Module(){
 	return (
-		<div className="w-[300px] overflow-hidden rounded-xl shadow-xl relative">
-			<img src={banner} alt="" />
+		<li className="min-w-[250px] max-w-[250px] overflow-hidden rounded-xl shadow-xl relative">
+			<div className="w-full aspect-video overflow-hidden">
+				<img src={banner} alt="" className="scale-125" />
+			</div>
 			<div className="p-3 px-6">
 				<h1 className="font-medium text-lg flex items-center">
 					Arrays and String
@@ -12,9 +14,9 @@ function Module(){
 						<Star weight="fill"/>
 					</button>
 				</h1>
-				<p>Garden Walk</p>
+				<p className="italic">Garden Walk</p>
 			</div>
-		</div>
+		</li>
 	)
 }
 
